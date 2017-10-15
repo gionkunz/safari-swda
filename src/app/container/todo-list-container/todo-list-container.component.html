@@ -1,0 +1,5 @@
+<swda-todo-list
+  [todoItems]="todoItems | async"
+  (onMarkAsDone)="markAsDone($event)"
+  (onShowDetails)="showDetails($event)">
+</swda-todo-list>

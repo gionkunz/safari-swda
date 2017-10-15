@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  box-shadow: 0 -5px 6px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-container {
+  display: flex;
+  max-width: 800px;
+  padding: 0 10px;
+  margin: 0 auto;
+  height: 60px;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.create {
+  margin-left: auto;
+  padding: 10px;
+  margin-right: -10px;
+  color: #00CBE7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+
+.main {
+  margin-top: 100px;
+}
+
+.main-container {
+  display: block;
+  max-width: 800px;
+  padding: 0 10px;
+  margin: 0 auto;
+}

@@ -1,0 +1,14 @@
+<header class="header">
+  <div class="header-container">
+    <h1 [routerLink]="['/todos']"
+        tabindex="0"
+        class="title">Todo List</h1>
+    <button [routerLink]="['/create-todo']"
+            class="create">Create</button>
+  </div>
+</header>
+<main class="main">
+  <div class="main-container">
+    <router-outlet></router-outlet>
+  </div>
+</main>

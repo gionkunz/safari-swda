@@ -1,0 +1,48 @@
+:host {
+  display: block;
+}
+
+.input {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.input-label {
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  display: block;
+  background: none;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+  padding: 10px;
+}
+
+.input-field-textarea {
+  resize: none;
+  height: 200px;
+}
+
+.apply-changes {
+  padding: 10px;
+  color: #00DA3C;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  background: none;
+  border: 3px solid #00DA3C;
+  border-radius: 3px;
+}

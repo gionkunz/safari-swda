@@ -1,0 +1,6 @@
+<swda-todo-item
+  *ngFor="let todoItem of todoItems"
+  [todoItem]="todoItem"
+  (onMarkAsDone)="markAsDone(todoItem)"
+  (onShowDetails)="showDetails(todoItem)">
+</swda-todo-item>

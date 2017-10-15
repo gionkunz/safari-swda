@@ -1,0 +1,21 @@
+<label class="input">
+  <span class="input-label">Title</span>
+  <input #title
+         [value]="todoItem?.title"
+         placeholder="Go for a walk with my Dog"
+         type="text"
+         class="input-field">
+</label>
+<label class="input">
+  <span class="input-label">Description</span>
+  <textarea #description
+            [value]="todoItem?.description"
+            placeholder="Don't forget to take some goodies with me!"
+            type="text"
+            class="input-field input-field-textarea">
+  </textarea>
+</label>
+<button (click)="applyChanges(title.value, description.value)"
+        class="apply-changes">
+  {{applyButtonText}}
+</button>
