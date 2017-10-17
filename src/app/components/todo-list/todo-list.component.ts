@@ -18,4 +18,8 @@ export class TodoListComponent {
   showDetails(todoItem: TodoItem) {
     this.onShowDetails.emit(todoItem);
   }
+
+  trackByNr(index: number, todoItem: TodoItem) {
+    return todoItem.nr;
+  }
 }

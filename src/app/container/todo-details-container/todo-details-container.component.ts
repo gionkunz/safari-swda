@@ -1,10 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {TodoItem} from '../../model/todo';
-import {Store} from '@ngrx/store';
-import {ApplicationState} from '../../state/state';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UpdateTodoAction} from '../../state/actions';
+import {TodoService} from '../../service/todo.service';
 
 @Component({
   selector: 'swda-todo-details-container',
@@ -14,20 +12,17 @@ import {UpdateTodoAction} from '../../state/actions';
 export class TodoDetailsContainerComponent {
   todoItem: Observable<TodoItem>;
 
-  constructor(@Inject(Store) private store: Store<ApplicationState>,
+  constructor(@Inject(TodoService) private todoService: TodoService,
               @Inject(Router) private router: Router,
               @Inject(ActivatedRoute) private route: ActivatedRoute) {
     this.todoItem = route.params
-      .switchMap((params) =>
-        store.select((state) => state.todo.todoMap[params.nr]));
+      .switchMap((params) => todoService.loadTodo(params.nr));
   }
 
   updateTodo(data: any) {
     this.route.params
       .take(1)
-      .subscribe((params) => {
-        this.store.dispatch(new UpdateTodoAction(params.nr, data));
-        this.router.navigate(['/todos']);
-      });
+      .switchMap((params) => this.todoService.updateTodo(params.nr, data))
+      .subscribe(() => this.router.navigate(['/todos']));
   }
 }

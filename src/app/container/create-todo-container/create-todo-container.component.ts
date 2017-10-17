@@ -1,8 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {ApplicationState} from '../../state/state';
 import {Router} from '@angular/router';
-import {CreateTodoAction} from '../../state/actions';
+import {TodoService} from '../../service/todo.service';
 
 @Component({
   selector: 'swda-create-todo-container',
@@ -10,11 +8,12 @@ import {CreateTodoAction} from '../../state/actions';
   styleUrls: ['./create-todo-container.component.css']
 })
 export class CreateTodoContainerComponent {
-  constructor(@Inject(Store) private store: Store<ApplicationState>,
+  constructor(@Inject(TodoService) private todoService: TodoService,
               @Inject(Router) private router: Router) {}
 
   createTodo(todoData: any) {
-    this.store.dispatch(new CreateTodoAction(todoData));
-    this.router.navigate(['/todos']);
+    this.todoService.createTodo(todoData)
+      .take(1)
+      .subscribe(() => this.router.navigate(['/todos']));
   }
 }
