@@ -63,6 +63,11 @@ describe('TodoListContainer', () => {
     todoServiceMock = fixture.componentRef.injector.get(TodoService);
   });
 
+  it('should render two items', () => {
+    const todoItems = fixture.debugElement.queryAll(By.directive(TodoItemComponent));
+    expect(todoItems.length).toBe(2);
+  });
+
   it('should update done state when item checkbox is clicked', () => {
     const todoItems = fixture.debugElement.queryAll(By.directive(TodoItemComponent))
     const checkbox = todoItems[1].query(By.css('.checkbox'));
