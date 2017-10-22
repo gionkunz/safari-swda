@@ -1,3 +1,37 @@
 :host {
   display: block;
 }
+
+/* TODO: Extract styles into new component todo-item */
+.item {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+  padding: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.checkbox {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #c7c7c7;
+  border-radius: 3px;
+}
+
+.checkbox-done {
+  border-color: #00DA3C;
+  background-size: 60px;
+  background-position: -12px;
+  background-image: url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%2C%200%2C%2024%2C%2024%22%3E%0A%20%20%20%20%3Cg%20id%3D%22check%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M7.105%2013.473l1.422-1.423%201.901%201.902%204.81-6.952%201.657%201.148-6.26%208.852z%22%20fill%3D%22%2300DA3C%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A);
+}
+
+.title {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.title-done {
+  text-decoration-line: line-through;
+}

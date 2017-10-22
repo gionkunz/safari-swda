@@ -1,5 +1,16 @@
-<swda-todo-item
-  *ngFor="let todoItem of todoItems"
-  [todoItem]="todoItem"
-  (onMarkAsDone)="markAsDone(todoItem)">
-</swda-todo-item>
+<!-- TODO: Create new component todo-item and extract template from list -->
+<!-- Render the new item component here and use *ngFor on the component element -->
+<!-- Pass todoItem down using a component input -->
+<!-- Listen for onMarkAsDone output from item component -->
+<div class="item"
+     *ngFor="let todoItem of todoItems">
+  <div [class.checkbox-done]="todoItem.done"
+       (click)="markAsDone(todoItem)"
+       (keydown.enter)="markAsDone(todoItem)"
+       class="checkbox"
+       tabindex="0"></div>
+  <div [class.title-done]="todoItem.done"
+       class="title">
+    {{todoItem.title}}
+  </div>
+</div>
