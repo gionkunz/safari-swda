@@ -35,20 +35,17 @@ export class TodoService {
   }
 
   createTodo(data: any): void {
-    this.todos = [...this.todos, {
+    this.todos.push({
       nr: this.getNextNr(),
       done: false,
       ...data
-    }];
+    });
   }
 
   updateTodo(nr: string, data: any): void {
     const index = this.todos.findIndex((todo) => todo.nr === nr);
     if (index !== -1) {
-      this.todos[index] = {
-        ...this.todos[index],
-        ...data
-      };
+      Object.assign(this.todos[index], data);
     }
   }
 }

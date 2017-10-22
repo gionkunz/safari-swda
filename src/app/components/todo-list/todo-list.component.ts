@@ -1,11 +1,10 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TodoItem} from '../../model/todo';
 
 @Component({
   selector: 'swda-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent {
   @Input() todoItems: TodoItem[];
@@ -18,9 +17,5 @@ export class TodoListComponent {
 
   showDetails(todoItem: TodoItem) {
     this.onShowDetails.emit(todoItem);
-  }
-
-  trackByNr(index: number, todoItem: TodoItem) {
-    return todoItem.nr;
   }
 }
