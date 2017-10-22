@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {TodoListComponent} from '../../components/todo-list/todo-list.component';
 import {TodoListContainerComponent} from './todo-list-container.component';
 import {TodoItemComponent} from '../../components/todo-item/todo-item.component';
 import {By} from '@angular/platform-browser';
 import {TodoItem} from '../../model/todo';
 import {TodoService} from '../../service/todo.service';
 import {RouterModule} from '@angular/router';
+import {TodoListComponent} from '../../components/todo-list/todo-list.component';
 
 class TodoServiceMock extends TodoService {
   todos: TodoItem[] = [{
@@ -69,11 +69,17 @@ describe('TodoListContainer', () => {
   });
 
   it('should update done state when item checkbox is clicked', () => {
-    const todoItems = fixture.debugElement.queryAll(By.directive(TodoItemComponent))
-    const checkbox = todoItems[1].query(By.css('.checkbox'));
-    checkbox.triggerEventHandler('click', null);
-    fixture.detectChanges();
+    // TODO: Obtain the debug element of the checkbox rendered by the second TODO item
+    // By using fixture.debugElement.queryAll you can search for DebugElements
+    // in the component tree.
+    // Use the predicate builder `By` to search using CSS selectors or by Directives
+    // fixture.debugElement.queryAll(By.directive(TodoItemComponent))
+    // fixture.debugElement.queryAll(By.css('.element-class'))
 
-    expect(todoServiceMock.todos[1].done).toBe(true);
+    // TODO: Trigger a click event on the checkbox debug element
+    // You can trigger events using the `triggerEventHandler` function on a debug
+    // element. i.E. debugElement.triggerEventHandler('click', null);
+
+    // TODO: Assert on the state in the TodoService mock
   });
 });
