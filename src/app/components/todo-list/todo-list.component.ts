@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TodoItem} from '../../model/todo';
 
-// TODO: Add change detection strategy OnPush
 @Component({
   selector: 'swda-todo-list',
   templateUrl: './todo-list.component.html',
