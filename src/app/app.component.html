@@ -3,12 +3,11 @@
     <h1 [routerLink]="['/todos']"
         tabindex="0"
         class="title">Todo List</h1>
-    <button [routerLink]="['/create-todo']"
-            class="create">Create</button>
   </div>
 </header>
 <main class="main">
   <div class="main-container">
-    <router-outlet></router-outlet>
+    <!-- TODO: Remove direct reference to container and add <router-outlet> here -->
+    <swda-todo-list-container></swda-todo-list-container>
   </div>
 </main>
