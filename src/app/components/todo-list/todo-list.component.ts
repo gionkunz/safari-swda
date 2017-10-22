@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {TodoItem} from '../../model/todo';
+import {TodoService} from '../../service/todo.service';
 
 @Component({
   selector: 'swda-todo-list',
@@ -7,10 +8,16 @@ import {TodoItem} from '../../model/todo';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent {
-  @Input() todoItems: TodoItem[];
-  @Output() onMarkAsDone = new EventEmitter<TodoItem>();
+  todoItems: TodoItem[];
+
+  constructor(@Inject(TodoService) private todoService: TodoService) {
+    this.todoItems = todoService.getTodos();
+  }
 
   markAsDone(todoItem: TodoItem) {
-    this.onMarkAsDone.emit(todoItem);
+    this.todoService.updateTodo(todoItem.nr, {
+      done: !todoItem.done
+    });
+    this.todoItems = this.todoService.getTodos();
   }
 }
