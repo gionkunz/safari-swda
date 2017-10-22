@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {TodoItem} from '../../model/todo';
 import {Router} from '@angular/router';
 import {TodoService} from '../../service/todo.service';
 
+// TODO: Add change detection strategy OnPush
 @Component({
   selector: 'swda-todo-list-container',
   templateUrl: './todo-list-container.component.html',
-  styleUrls: ['./todo-list-container.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./todo-list-container.component.css']
 })
 export class TodoListContainerComponent {
   todoItems: TodoItem[];
