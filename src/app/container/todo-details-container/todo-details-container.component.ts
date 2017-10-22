@@ -3,7 +3,6 @@ import {TodoItem} from '../../model/todo';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TodoService} from '../../service/todo.service';
 
-// TODO: Add change detection strategy OnPush
 @Component({
   selector: 'swda-todo-details-container',
   templateUrl: './todo-details-container.component.html',
