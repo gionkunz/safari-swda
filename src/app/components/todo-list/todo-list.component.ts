@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {TodoItem} from '../../model/todo';
 
 @Component({
   selector: 'swda-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent {
   @Input() todoItems: TodoItem[];

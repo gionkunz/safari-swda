@@ -1,6 +1,6 @@
-<h2 class="sub-title">Details of Todo No.{{(todoItem | async)?.nr}}</h2>
+<h2 class="sub-title">Details of Todo No.{{todoItem.nr}}</h2>
 <swda-todo-details
-  [todoItem]="todoItem | async"
+  [todoItem]="todoItem"
   applyButtonText="Update Todo"
   (onApplyChanges)="updateTodo($event)">
 </swda-todo-details>

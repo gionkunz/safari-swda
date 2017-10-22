@@ -1,47 +1,54 @@
-import {Inject, Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Injectable} from '@angular/core';
 import {TodoItem} from '../model/todo';
-import {Observable} from 'rxjs/Rx';
-
-/**
- * Inject Http into your TodoService
- * ---------------------------------
- * You can use `@Inject(Http) private http: Http` in your constructor to
- * obtain the Http service.
- *
- * Create the necessary calls within TodoService to the backend
- * ------------------------------------------------------------
- * Implement the calls to the backend correctly using the following URLS:
- * GET http://localhost:8080/todos
- * PUT http://localhost:8080/todos
- *     BODY: {title: string; description: string; done: boolean}
- * GET http://localhost:8080/todos/:id
- * POST http://localhost:8080/todos/:id
- *     BODY: {title: string; description: string; done: boolean}
- *
- * Examples: https://angular.io/tutorial/toh-pt6
- *
- */
 
 @Injectable()
 export class TodoService {
-  url = 'http://localhost:8080';
+  private todos: TodoItem[] = [{
+    nr: '1',
+    title: 'Todo 1',
+    description: 'Todo 1 Description',
+    done: true
+  }, {
+    nr: '2',
+    title: 'Todo 2',
+    description: 'Todo 2 Description',
+    done: false
+  }, {
+    nr: '3',
+    title: 'Todo 3',
+    description: 'Todo 3 Description',
+    done: false
+  }];
 
-  loadTodos(): Observable<TodoItem[]> {
-    return Observable.of([]);
+  getTodos(): TodoItem[] {
+    return this.todos;
   }
 
-  loadTodo(nr: string): Observable<TodoItem> {
-    return Observable.of({});
+  getTodo(nr: string): TodoItem {
+    return this.todos.find((todo) => todo.nr === nr) || <TodoItem>{};
   }
 
-  createTodo(data: any): Observable<TodoItem> {
-    return Observable.of({});
+  private getNextNr() {
+    return `${
+      this.todos.reduce((n, todo) => +todo.nr > +n ? +todo.nr : +n, 0) + 1
+    }`;
   }
 
-  updateTodo(nr: string, data: any): Observable<TodoItem> {
-    return Observable.of({});
+  createTodo(data: any): void {
+    this.todos = [...this.todos, {
+      nr: this.getNextNr(),
+      done: false,
+      ...data
+    }];
   }
 
-  constructor(@Inject(Http) private http: Http) {}
+  updateTodo(nr: string, data: any): void {
+    const index = this.todos.findIndex((todo) => todo.nr === nr);
+    if (index !== -1) {
+      this.todos[index] = {
+        ...this.todos[index],
+        ...data
+      };
+    }
+  }
 }
