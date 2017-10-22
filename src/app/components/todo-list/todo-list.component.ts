@@ -9,17 +9,8 @@ import {TodoItem} from '../../model/todo';
 export class TodoListComponent {
   @Input() todoItems: TodoItem[];
   @Output() onMarkAsDone = new EventEmitter<TodoItem>();
-  @Output() onShowDetails = new EventEmitter<TodoItem>();
 
   markAsDone(todoItem: TodoItem) {
     this.onMarkAsDone.emit(todoItem);
-  }
-
-  showDetails(todoItem: TodoItem) {
-    this.onShowDetails.emit(todoItem);
-  }
-
-  trackByNr(index: number, todoItem: TodoItem) {
-    return todoItem.nr;
   }
 }
