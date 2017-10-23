@@ -1,26 +1,33 @@
 import {defaultTodoState, TodoState} from './state';
 import {TodoActions} from './actions';
-import {listToMap} from '../util/util';
 
 export function todoReducer(
   state: TodoState = defaultTodoState,
   action: TodoActions): TodoState {
 
   switch (action.type) {
-    case 'LoadAllTodosSuccessAction':
+    case 'CreateTodoAction':
       return {
         ...state,
-        todoMap: listToMap(action.todoItems, 'nr')
+        todoItems: [...state.todoItems, {
+          nr: `${state.todoItems.length + 1}`,
+          ...action.data
+        }]
       };
 
-    case 'CreateTodoSuccessAction':
-    case 'UpdateTodoSuccessAction':
+    case 'UpdateTodoAction':
       return {
         ...state,
-        todoMap: {
-          ...state.todoMap,
-          [action.todoItem.nr]: action.todoItem
-        }
+        todoItems: state.todoItems.map((todoItem) => {
+          if (todoItem.nr === action.todoNr) {
+            return {
+              ...todoItem,
+              ...action.data
+            };
+          } else {
+            return todoItem;
+          }
+        })
       };
 
     default: return state;

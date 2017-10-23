@@ -3,7 +3,6 @@ import {TodoItem} from '../../model/todo';
 import {Observable} from 'rxjs/Rx';
 import {Store} from '@ngrx/store';
 import {ApplicationState} from '../../state/state';
-import {mapToList} from '../../util/util';
 import {UpdateTodoAction} from '../../state/actions';
 import {Router} from '@angular/router';
 
@@ -17,7 +16,7 @@ export class TodoListContainerComponent {
 
   constructor(@Inject(Store) private store: Store<ApplicationState>,
               @Inject(Router) private router: Router) {
-    this.todoItems = store.select((state) => mapToList(state.todo.todoMap));
+    this.todoItems = store.select((state) => state.todo.todoItems);
   }
 
   markAsDone(todoItem: TodoItem) {

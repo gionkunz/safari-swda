@@ -1,3 +1,5 @@
+import 'rxjs/Rx';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,8 +12,6 @@ import { TodoDetailsContainerComponent } from './container/todo-details-containe
 import {StoreModule} from '@ngrx/store';
 import {todoReducer} from './state/reducers';
 import {HttpModule} from '@angular/http';
-import {EffectsModule} from '@ngrx/effects';
-import {TodoEffects} from './state/effects';
 import {TodoService} from './service/todo.service';
 import {RouterModule} from '@angular/router';
 import {CreateTodoContainerComponent} from './container/create-todo-container/create-todo-container.component';
@@ -45,10 +45,7 @@ import {CreateTodoContainerComponent} from './container/create-todo-container/cr
     }]),
     StoreModule.forRoot({
       todo: todoReducer
-    }),
-    EffectsModule.forRoot([
-      TodoEffects
-    ])
+    })
   ],
   providers: [
     TodoService

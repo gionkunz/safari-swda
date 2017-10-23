@@ -19,7 +19,11 @@ export class TodoDetailsContainerComponent {
               @Inject(ActivatedRoute) private route: ActivatedRoute) {
     this.todoItem = route.params
       .switchMap((params) =>
-        store.select((state) => state.todo.todoMap[params.nr]));
+        store.select((state) =>
+          state.todo.todoItems
+            .find((todo) => todo.nr === params.nr)
+        )
+      );
   }
 
   updateTodo(data: any) {

@@ -4,7 +4,3 @@ export interface TodoItem {
   description: string;
   done: boolean;
 }
-
-export interface TodoMap {
-  [k: string]: TodoItem;
-}
