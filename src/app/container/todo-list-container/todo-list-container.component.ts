@@ -3,7 +3,6 @@ import {TodoItem} from '../../model/todo';
 import {Observable} from 'rxjs/Rx';
 import {Store} from '@ngrx/store';
 import {ApplicationState} from '../../state/state';
-import {UpdateTodoAction} from '../../state/actions';
 import {Router} from '@angular/router';
 
 @Component({
@@ -20,9 +19,7 @@ export class TodoListContainerComponent {
   }
 
   markAsDone(todoItem: TodoItem) {
-    this.store.dispatch(new UpdateTodoAction(todoItem.nr, {
-      done: !todoItem.done
-    }));
+
   }
 
   showDetails(todoItem: TodoItem) {

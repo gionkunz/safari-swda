@@ -4,7 +4,6 @@ import {TodoItem} from '../../model/todo';
 import {Store} from '@ngrx/store';
 import {ApplicationState} from '../../state/state';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UpdateTodoAction} from '../../state/actions';
 
 @Component({
   selector: 'swda-todo-details-container',
@@ -30,7 +29,6 @@ export class TodoDetailsContainerComponent {
     this.route.params
       .take(1)
       .subscribe((params) => {
-        this.store.dispatch(new UpdateTodoAction(params.nr, data));
         this.router.navigate(['/todos']);
       });
   }
