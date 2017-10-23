@@ -9,8 +9,6 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
 import { TodoListContainerComponent } from './container/todo-list-container/todo-list-container.component';
 import { TodoDetailsContainerComponent } from './container/todo-details-container/todo-details-container.component';
-import {StoreModule} from '@ngrx/store';
-import {todoReducer} from './state/reducers';
 import {HttpModule} from '@angular/http';
 import {TodoService} from './service/todo.service';
 import {RouterModule} from '@angular/router';
@@ -42,10 +40,7 @@ import {CreateTodoContainerComponent} from './container/create-todo-container/cr
       path: '',
       pathMatch: 'full',
       redirectTo: '/todos'
-    }]),
-    StoreModule.forRoot({
-      todo: todoReducer
-    })
+    }])
   ],
   providers: [
     TodoService

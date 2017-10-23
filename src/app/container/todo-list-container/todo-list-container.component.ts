@@ -1,8 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {TodoItem} from '../../model/todo';
 import {Observable} from 'rxjs/Rx';
-import {Store} from '@ngrx/store';
-import {ApplicationState} from '../../state/state';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,9 +11,8 @@ import {Router} from '@angular/router';
 export class TodoListContainerComponent {
   todoItems: Observable<TodoItem[]>;
 
-  constructor(@Inject(Store) private store: Store<ApplicationState>,
-              @Inject(Router) private router: Router) {
-    this.todoItems = store.select((state) => state.todo.todoItems);
+  constructor(@Inject(Router) private router: Router) {
+    this.todoItems = Observable.of([]);
   }
 
   markAsDone(todoItem: TodoItem) {
